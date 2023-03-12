@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color: #aa96da;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .container {
+        background-color: #393e467d;
+        padding: 20px 40px;
+        border-radius: 10px;
+    }
+
+    .container h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .container a {
+        text-decoration: none;
+        color: lightblue;
+    }
+
+    .btn {
+        cursor: pointer;
+        display: inline-block;
+        width: 100%;
+        background: lightblue;
+        padding: 15px; /* Задаем отступы для внутреннего контента внутри .btn */
+        font-family: inherit;
+        font-size: 26px;
+        border: 0;
+        border-radius: 5px;
+    }
+
+    /* Убираем контур при фокусе на .btn */
+    .btn:focus {
+        outline: 0;
+    }
+
+    /* Уменьшаем масштаб элемента на 2% при активации .btn */
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .text {
+        margin-top: 30px;
+    }
+
+    .form-control {
+        position: relative;  /* Устанавливаем позиционирование элемента в контексте родительского элемента */
+        margin: 20px 0 40px;
+        width: 300px;
+    }
+
+    .form-control input {
+        background-color: transparent; /* Убираем фоновый цвет для элемента ввода */
+        border: 0;
+        border-bottom: 2px #fff solid;
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .form-control input:focus,
+    .form-control input:valid {
+        outline: 0; /* Убираем рамку при фокусе на поле ввода */
+        border-bottom-color: lightblue;
+    }
+
+    .form-control label {
+        position: absolute;  /* Устанавливаем позиционирование метки в контексте родительского элемента */
+        top: 15px;
+        left: 0;
+        pointer-events: none; /* Отключаем возможность взаимодействия с меткой */
+    }
+
+    .form-control label span {
+        display: inline-block;
+        font-size: 18px;
+        min-width: 5px;
+        transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Задаем анимацию для перехода между состояниями */
+    }
+
+    /* Активное состояние для поля ввода */
+    .form-control input:focus + label span,
+    .form-control input:valid + label span {
+        color: lightblue;
+        transform: translateY(-30px);
+    }
+</style>
+<body>
+    
+    <div class="container">
+        <h1>Sign in</h1>
+        <form>
+            <div class="form-control">
+                <input type="text" required />
+                <label><span>Your Email</span></label>
+            </div>
+            <div class="form-control">
+                <input type="password" required />
+                <label><span>Your Password</span></label>
+            </div>
+            <button class="btn">Submit</button>
+            <p class="text">Don't have an account?
+              <a href="#">Create Account</a></p>
+        </form>
+    </div>
+    <script>
+        const label = document.querySelectorAll(".form-control label");
+    
+        label.forEach((label) => {
+          label.innerHTML = label.innerText
+            .split("")
+            .map(
+              (letter, idx) =>
+              `<span style="transition-delay:${idx * 4}ms">${letter}</span>`
+        )
+           .join("");
+        });
+    </script>
+</body>
+</html>
